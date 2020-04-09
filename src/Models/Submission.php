@@ -50,6 +50,11 @@ class Submission extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getTags()
+    {
+	return config('formbuilder.submissions_tags', []);
+    }
+	
     /**
      * A Submission belongs to a Form
      *
