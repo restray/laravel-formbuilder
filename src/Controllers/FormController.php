@@ -39,7 +39,7 @@ class FormController extends Controller
     {
         $pageTitle = "Formulaires";
 
-        $forms = Form::getForUser(auth()->user());
+        $forms = Form::all();
 
         return view('formbuilder::forms.index', compact('pageTitle', 'forms'));
     }
@@ -109,7 +109,7 @@ class FormController extends Controller
     public function show($id)
     {
         $user = auth()->user();
-        $form = Form::where(['user_id' => $user->id, 'id' => $id])
+        $form = Form::where(['id' => $id])
                     ->with('user')
                     ->withCount('submissions')
                     ->firstOrFail();
@@ -129,7 +129,7 @@ class FormController extends Controller
     {
         $user = auth()->user();
 
-        $form = Form::where(['user_id' => $user->id, 'id' => $id])->firstOrFail();
+        $form = Form::where(['id' => $id])->firstOrFail();
 
         $pageTitle = 'Edition du formulaire';
 
@@ -151,7 +151,7 @@ class FormController extends Controller
     public function update(SaveFormRequest $request, $id)
     {
         $user = auth()->user();
-        $form = Form::where(['user_id' => $user->id, 'id' => $id])->firstOrFail();
+        $form = Form::where(['id' => $id])->firstOrFail();
 
         $input = $request->except('_token');
 
@@ -179,7 +179,7 @@ class FormController extends Controller
     public function destroy($id)
     {
         $user = auth()->user();
-        $form = Form::where(['user_id' => $user->id, 'id' => $id])->firstOrFail();
+        $form = Form::where(['id' => $id])->firstOrFail();
         $form->delete();
 
         // dispatch the event
