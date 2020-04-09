@@ -5,10 +5,9 @@ Licensed under the GNU General Public License v3.0
 Author: Jasmine Robinson (jazmy.com)
 Last Updated: 12/29/2018
 ----------------------*/
-namespace jazmy\FormBuilder\Models;
+namespace restray\FormBuilder\Models;
 
-use App\User;
-use jazmy\FormBuilder\Models\Form;
+use restray\FormBuilder\Models\Form;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\HtmlString;
@@ -47,7 +46,7 @@ class Submission extends Model
      */
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(config('formbuilder.user_model', 'App\User'));
     }
 
     public function getTags()
