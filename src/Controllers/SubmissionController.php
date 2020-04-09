@@ -47,7 +47,7 @@ class SubmissionController extends Controller
         // get the header for the entries in the form
         $form_headers = $form->getEntriesHeader();
 
-        $pageTitle = "Submitted Entries for '{$form->name}'";
+        $pageTitle = __("Submitted Entries for")."'{$form->name}'";
 
         return view(
             'formbuilder::submissions.index',
@@ -77,6 +77,17 @@ class SubmissionController extends Controller
 
         return view('formbuilder::submissions.show', compact('pageTitle', 'submission', 'form_headers'));
     }
+    
+    public function update($form_id, $submission_id, Request $request) 
+    {
+        $submission = Submission::where(['form_id' => $form_id, 'id' => $submission_id])->firstOrFail();
+        $submission->tag = $request->tag;
+        $submission->save();
+        
+        return redirect()
+                    ->route('formbuilder::forms.submissions.show', compact('form_id', 'submission_id'))
+                    ->with('success', __('Submission successfully updates.'));
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -92,6 +103,6 @@ class SubmissionController extends Controller
 
         return redirect()
                     ->route('formbuilder::forms.submissions.index', $form_id)
-                    ->with('success', 'Submission successfully deleted.');
+                    ->with('success', __('Submission successfully deleted.'));
     }
 }
