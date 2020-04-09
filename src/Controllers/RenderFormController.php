@@ -5,11 +5,11 @@ Licensed under the GNU General Public License v3.0
 Author: Jasmine Robinson (jazmy.com)
 Last Updated: 12/29/2018
 ----------------------*/
-namespace jazmy\FormBuilder\Controllers;
+namespace restray\FormBuilder\Controllers;
 
 use App\Http\Controllers\Controller;
-use jazmy\FormBuilder\Helper;
-use jazmy\FormBuilder\Models\Form;
+use restray\FormBuilder\Helper;
+use restray\FormBuilder\Models\Form;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
@@ -77,7 +77,7 @@ class RenderFormController extends Controller
 
             return redirect()
                     ->route('formbuilder::form.feedback', $identifier)
-                    ->with('success', 'Form successfully submitted.');
+                    ->with('success', 'Formulaire envoyé!');
         } catch (Throwable $e) {
             info($e);
 
@@ -97,7 +97,7 @@ class RenderFormController extends Controller
     {
         $form = Form::where('identifier', $identifier)->firstOrFail();
 
-        $pageTitle = "Form Submitted!";
+        $pageTitle = "Formulaire envoyé!";
 
         return view('formbuilder::render.feedback', compact('form', 'pageTitle'));
     }

@@ -5,9 +5,9 @@ Licensed under the GNU General Public License v3.0
 Author: Jasmine Robinson (jazmy.com)
 Last Updated: 12/29/2018
 ----------------------*/
-namespace jazmy\FormBuilder\Requests;
+namespace restray\FormBuilder\Requests;
 
-use jazmy\FormBuilder\Models\Form;
+use restray\FormBuilder\Models\Form;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

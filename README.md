@@ -99,7 +99,7 @@ php artisan vendor:publish --tag formbuilder-public
 ```
 Or you can publish everything at once with
 ```bash
-php artisan vendor:publish --provider="jazmy\FormBuilder\FormBuilderServiceProvider"
+php artisan vendor:publish --provider="restray\FormBuilder\FormBuilderServiceProvider"
 ```
 
 ### Step Seven:
@@ -120,7 +120,7 @@ http://your.domain.com/form-builder/my-submissions
 You can access forms and submissions that belong to a user in your application. To use the trait add a use statement to your user model class.
 
 ```php
-use jazmy\FormBuilder\Traits\HasFormBuilderTraits;
+use restray\FormBuilder\Traits\HasFormBuilderTraits;
 
 class User extends Authenticatable
 {
@@ -139,10 +139,10 @@ $user->forms;
 // get the user's submissions
 $user->submissions;
 
-// or use static methods on the jazmy\FormBuilder\Models\Form class
+// or use static methods on the restray\FormBuilder\Models\Form class
 $user_forms = Form::getForUser($user); // returns a paginated resultset
 
-// the jazmy\FormBuilder\Models\Submission class also has a static method for getting the submissions
+// the restray\FormBuilder\Models\Submission class also has a static method for getting the submissions
 // that belong to a user
 $my_submissions = Submission::getForUser($user); // returns a paginated resultset
 ```

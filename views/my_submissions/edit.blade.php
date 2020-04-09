@@ -25,7 +25,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary confirm-form" data-form="submitForm" data-message="Submit update to your entry for '{{ $submission->form->name }}'?">
-                            <i class="fa fa-submit"></i> Submit Form
+                            <i class="fa fa-submit"></i> Soumettre le formulaire
                         </button>
                     </div>
                 </form>
@@ -39,5 +39,5 @@
     <script type="text/javascript">
         window._form_builder_content = {!! json_encode($submission->form->form_builder_json) !!}
     </script>
-    <script src="{{ asset('vendor/formbuilder/js/render-form.js') }}{{ jazmy\FormBuilder\Helper::bustCache() }}" defer></script>
+    <script src="{{ asset('vendor/formbuilder/js/render-form.js') }}{{ restray\FormBuilder\Helper::bustCache() }}" defer></script>
 @endpush

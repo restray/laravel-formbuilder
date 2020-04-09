@@ -51,7 +51,15 @@ class Submission extends Model
 
     public function getTags()
     {
-	return config('formbuilder.submissions_tags', []);
+	    return config('formbuilder.submissions_tags', []);
+    }
+    public function getTagColor()
+    {
+        return $this->getTags()[$this->tag]['color'];
+    }
+    public function getTagName()
+    {
+        return $this->getTags()[$this->tag]['name'];
     }
 	
     /**

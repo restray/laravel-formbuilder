@@ -5,9 +5,9 @@ Licensed under the GNU General Public License v3.0
 Author: Jasmine Robinson (jazmy.com)
 Last Updated: 12/29/2018
 ----------------------*/
-namespace jazmy\FormBuilder\Models;
+namespace restray\FormBuilder\Models;
 
-use jazmy\FormBuilder\Models\Submission;
+use restray\FormBuilder\Models\Submission;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 

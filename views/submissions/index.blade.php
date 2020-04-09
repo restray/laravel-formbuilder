@@ -10,7 +10,7 @@
                         {{ $pageTitle }} ({{ $submissions->count() }})
                         
                         <a href="{{ route('formbuilder::forms.index') }}" class="btn btn-primary float-md-right btn-sm">
-                            <i class="fa fa-arrow-left"></i> Back To Forms
+                            <i class="fa fa-arrow-left"></i> Retourner aux formulaires
                         </a>
                     </h5>
                 </div>
@@ -21,7 +21,7 @@
                             <thead>
                                 <tr>
                                     <th class="five">#</th>
-                                    <th class="fifteen">User Name</th>
+                                    <th class="fifteen">Nom d'utilisateur</th>
                                     @foreach($form_headers as $header)
                                         <th>{{ $header['label'] ?? title_case($header['name']) }}</th>
                                     @endforeach
@@ -33,6 +33,7 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $submission->user->name ?? 'n/a' }}</td>
+                                        <td><span class="badge badge-{{ $submission->getTagColor() }}">{{ $submission->getTagName() }}</td>
                                         @foreach($form_headers as $header)
                                             <td>
                                                 {{ 
@@ -44,14 +45,14 @@
                                         @endforeach
                                         <td>
                                             <a href="{{ route('formbuilder::forms.submissions.show', [$form, $submission->id]) }}" class="btn btn-primary btn-sm" title="View submission">
-                                                <i class="fa fa-eye"></i> View
+                                                <i class="fa fa-eye"></i> Voir
                                             </a> 
 
                                             <form action="{{ route('formbuilder::forms.submissions.destroy', [$form, $submission]) }}" method="POST" id="deleteSubmissionForm_{{ $submission->id }}" class="d-inline-block">
                                                 @csrf 
                                                 @method('DELETE')
 
-                                                <button type="submit" class="btn btn-danger btn-sm confirm-form" data-form="deleteSubmissionForm_{{ $submission->id }}" data-message="Delete this submission?" title="Delete submission">
+                                                <button type="submit" class="btn btn-danger btn-sm confirm-form" data-form="deleteSubmissionForm_{{ $submission->id }}" data-message="Êtes-vous sur de supprimer la soumission?" title="Supprimer la soumission">
                                                     <i class="fa fa-trash-o"></i> 
                                                 </button>
                                             </form>
@@ -69,7 +70,7 @@
                 @else
                     <div class="card-body">
                         <h4 class="text-danger text-center">
-                            No submission to display.
+                            Aucune soumission à montrer
                         </h4>
                     </div>  
                 @endif

@@ -11,13 +11,13 @@
     },
     "autoload": {
         "psr-4": {
-            "jazmy\\FormBuilder\\": "src/"
+            "restray\\FormBuilder\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "jazmy\\FormBuilder\\FormBuilderServiceProvider"
+                "restray\\FormBuilder\\FormBuilderServiceProvider"
             ]
         }
     }

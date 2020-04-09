@@ -5,15 +5,15 @@ Licensed under the GNU General Public License v3.0
 Author: Jasmine Robinson (jazmy.com)
 Last Updated: 12/29/2018
 ----------------------*/
-namespace jazmy\FormBuilder\Controllers;
+namespace restray\FormBuilder\Controllers;
 
 use App\Http\Controllers\Controller;
-use jazmy\FormBuilder\Events\Form\FormCreated;
-use jazmy\FormBuilder\Events\Form\FormDeleted;
-use jazmy\FormBuilder\Events\Form\FormUpdated;
-use jazmy\FormBuilder\Helper;
-use jazmy\FormBuilder\Models\Form;
-use jazmy\FormBuilder\Requests\SaveFormRequest;
+use restray\FormBuilder\Events\Form\FormCreated;
+use restray\FormBuilder\Events\Form\FormDeleted;
+use restray\FormBuilder\Events\Form\FormUpdated;
+use restray\FormBuilder\Helper;
+use restray\FormBuilder\Models\Form;
+use restray\FormBuilder\Requests\SaveFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Throwable;
@@ -37,7 +37,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        $pageTitle = "Forms";
+        $pageTitle = "Formulaires";
 
         $forms = Form::getForUser(auth()->user());
 
@@ -51,7 +51,7 @@ class FormController extends Controller
      */
     public function create()
     {
-        $pageTitle = "Create New Form";
+        $pageTitle = "Création d'un Formulaire";
 
         $saveURL = route('formbuilder::forms.store');
 
@@ -64,7 +64,7 @@ class FormController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  jazmy\FormBuilder\Requests\SaveFormRequest $request
+     * @param  restray\FormBuilder\Requests\SaveFormRequest $request
      * @return \Illuminate\Http\Response
      */
     public function store(SaveFormRequest $request)
@@ -88,7 +88,7 @@ class FormController extends Controller
             return response()
                     ->json([
                         'success' => true,
-                        'details' => 'Form successfully created!',
+                        'details' => 'Formulaire créé!',
                         'dest' => route('formbuilder::forms.index'),
                     ]);
         } catch (Throwable $e) {
@@ -114,7 +114,7 @@ class FormController extends Controller
                     ->withCount('submissions')
                     ->firstOrFail();
 
-        $pageTitle = "Preview Form";
+        $pageTitle = "Voir le formulaire";
 
         return view('formbuilder::forms.show', compact('pageTitle', 'form'));
     }
@@ -131,7 +131,7 @@ class FormController extends Controller
 
         $form = Form::where(['user_id' => $user->id, 'id' => $id])->firstOrFail();
 
-        $pageTitle = 'Edit Form';
+        $pageTitle = 'Edition du formulaire';
 
         $saveURL = route('formbuilder::forms.update', $form);
 
@@ -144,7 +144,7 @@ class FormController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  jazmy\FormBuilder\Requests\SaveFormRequest $request
+     * @param  restray\FormBuilder\Requests\SaveFormRequest $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -162,7 +162,7 @@ class FormController extends Controller
             return response()
                     ->json([
                         'success' => true,
-                        'details' => 'Form successfully updated!',
+                        'details' => 'Formulaire mis à jour!',
                         'dest' => route('formbuilder::forms.index'),
                     ]);
         } else {

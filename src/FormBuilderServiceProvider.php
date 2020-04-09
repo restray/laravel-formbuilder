@@ -5,10 +5,10 @@ Licensed under the GNU General Public License v3.0
 Author: Jasmine Robinson (jazmy.com)
 Last Updated: 12/29/2018
 ----------------------*/
-namespace jazmy\FormBuilder;
+namespace restray\FormBuilder;
 
-use jazmy\FormBuilder\Middlewares\FormAllowSubmissionEdit;
-use jazmy\FormBuilder\Middlewares\PublicFormAccess;
+use restray\FormBuilder\Middlewares\FormAllowSubmissionEdit;
+use restray\FormBuilder\Middlewares\PublicFormAccess;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 

@@ -30,5 +30,11 @@ return [
     /**
      * The class that will provide the roles we will display on form create or edit pages?
      */
-    'roles_provider' => jazmy\FormBuilder\Services\RolesProvider::class,
+    'roles_provider' => restray\FormBuilder\Services\RolesProvider::class,
+
+    'tags' => [
+        'waiting' => ['name' => 'En attente', 'color' => 'grey']
+    ],
+
+    'user_model' => \App\User::class
 ];

@@ -5,12 +5,12 @@ Licensed under the GNU General Public License v3.0
 Author: Jasmine Robinson (jazmy.com)
 Last Updated: 12/29/2018
 ----------------------*/
-namespace jazmy\FormBuilder\Controllers;
+namespace restray\FormBuilder\Controllers;
 
 use App\Http\Controllers\Controller;
-use jazmy\FormBuilder\Helper;
-use jazmy\FormBuilder\Models\Form;
-use jazmy\FormBuilder\Models\Submission;
+use restray\FormBuilder\Helper;
+use restray\FormBuilder\Models\Form;
+use restray\FormBuilder\Models\Submission;
 use Illuminate\Http\Request;
 
 class SubmissionController extends Controller
@@ -47,7 +47,7 @@ class SubmissionController extends Controller
         // get the header for the entries in the form
         $form_headers = $form->getEntriesHeader();
 
-        $pageTitle = __("Submitted Entries for")."'{$form->name}'";
+        $pageTitle = __("Toutes les soumissions pour ")."'{$form->name}'";
 
         return view(
             'formbuilder::submissions.index',
@@ -75,10 +75,10 @@ class SubmissionController extends Controller
 
         $pageTitle = "View Submission";
 
-        return view('formbuilder::submissions.show', compact('pageTitle', 'submission', 'form_headers'));
+        return view('formbuilder::submissions.show', compact('pageTitle', 'submission', 'form_id', 'form_headers'));
     }
     
-    public function update($form_id, $submission_id, Request $request) 
+    public function update(Request $request, $form_id, $submission_id) 
     {
         $submission = Submission::where(['form_id' => $form_id, 'id' => $submission_id])->firstOrFail();
         $submission->tag = $request->tag;
@@ -86,7 +86,7 @@ class SubmissionController extends Controller
         
         return redirect()
                     ->route('formbuilder::forms.submissions.show', compact('form_id', 'submission_id'))
-                    ->with('success', __('Submission successfully updates.'));
+                    ->with('success', __('Soumission bien mis à jour.'));
     }
 
     /**
@@ -103,6 +103,6 @@ class SubmissionController extends Controller
 
         return redirect()
                     ->route('formbuilder::forms.submissions.index', $form_id)
-                    ->with('success', __('Submission successfully deleted.'));
+                    ->with('success', __('Soumission bien supprimée.'));
     }
 }
