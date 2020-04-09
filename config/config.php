@@ -32,7 +32,7 @@ return [
      */
     'roles_provider' => restray\FormBuilder\Services\RolesProvider::class,
 
-    'tags' => [
+    'submissions_tags' => [
         'waiting' => ['name' => 'En attente', 'color' => 'grey']
     ],
 

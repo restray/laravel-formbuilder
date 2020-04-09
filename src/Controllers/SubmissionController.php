@@ -85,7 +85,7 @@ class SubmissionController extends Controller
         $submission->save();
         
         return redirect()
-                    ->route('formbuilder::forms.submissions.show', compact('form_id', 'submission_id'))
+                    ->route('formbuilder::forms.submissions.show', ['fid' => $form_id] + compact('submission_id'))
                     ->with('success', __('Soumission bien mis à jour.'));
     }
 
