@@ -42,6 +42,7 @@ class Form extends Model
      */
     protected $casts = [
         'allows_edit' => 'boolean',
+        'enabled' => 'boolean'
     ];
 
     /**
@@ -113,6 +114,11 @@ class Form extends Model
     public function isPrivate() : bool
     {
         return $this->visibility === self::FORM_PRIVATE;
+    }
+
+    public function isEnabled()
+    {
+        return $this->enabled;
     }
 
     /**

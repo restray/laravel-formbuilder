@@ -34,7 +34,7 @@ class RenderFormController extends Controller
      */
     public function render($identifier)
     {
-        $form = Form::where('identifier', $identifier)->firstOrFail();
+        $form = Form::where('identifier', $identifier)->where('enabled', '=', true)->firstOrFail();
 
         $pageTitle = "{$form->name}";
 
@@ -50,7 +50,7 @@ class RenderFormController extends Controller
      */
     public function submit(Request $request, $identifier)
     {
-        $form = Form::where('identifier', $identifier)->firstOrFail();
+        $form = Form::where('identifier', $identifier)->where('enabled', '=', true)->firstOrFail();
 
         DB::beginTransaction();
 
