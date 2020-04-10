@@ -87,6 +87,20 @@
 
                         <div class="row">
                             <div class="col-12">
+                                <p>Activer le formulaire (afficher sur la page d'accueil)</p>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="enabled" name="enabled" value="true" class="custom-control-input">
+                                    <label class="custom-control-label" for="enabled">Activé</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input type="radio" id="disabled" name="enabled" value="false" class="custom-control-input">
+                                    <label class="custom-control-label" for="disabled">Désactivé</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-12">
                                 <div class="alert alert-info" role="alert">
                                     <i class="fa fa-info-circle"></i> 
                                     Click on or Drag and drop components onto the main panel to build your form content.

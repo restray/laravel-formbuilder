@@ -35,6 +35,7 @@ class SaveFormRequest extends FormRequest
             'visibility' => ['required', Rule::in([Form::FORM_PUBLIC, Form::FORM_PRIVATE])],
             'allows_edit' => 'required|boolean',
             'form_builder_json' => 'required|json',
+            'enabled' => 'required|in:true,false',
         ];
     }
 }
