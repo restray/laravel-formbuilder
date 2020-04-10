@@ -77,6 +77,7 @@ class FormController extends Controller
 
         // generate a random identifier
         $input['identifier'] = $user->id.'-'.Helper::randomString(20);
+        $input['enabled'] = $input['enabled'] == "true";
         $created = Form::create($input);
 
         try {
@@ -154,6 +155,7 @@ class FormController extends Controller
         $form = Form::where(['id' => $id])->firstOrFail();
 
         $input = $request->except('_token');
+        $input['enabled'] = $input['enabled'] == "true";
 
         if ($form->update($input)) {
             // dispatch the event
