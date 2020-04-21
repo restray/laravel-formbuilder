@@ -38,9 +38,7 @@ class SubmissionController extends Controller
                     ->firstOrFail();
 
         $submissions = $form->submissions()
-                            ->with('user')
-                            ->latest()
-                            ->paginate(100);
+                            ->with('user');
 
         // get the header for the entries in the form
         $form_headers = $form->getEntriesHeader();
